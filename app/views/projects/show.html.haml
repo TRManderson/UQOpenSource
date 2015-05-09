@@ -3,7 +3,7 @@
     %h1
       = @project.title
     .description
-      = @project.description
+      = markdown @project.description
     .links
       %h3 Links
       - for link in @project.links
