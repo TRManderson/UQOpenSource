@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new params[:project]
+    @project = Project.new params[:project].permit!
     if @project.save
       permission = Permission.new
       permission.project_id = @project.id
