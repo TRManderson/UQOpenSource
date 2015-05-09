@@ -5,6 +5,9 @@
     .description
       = @project.description
     .links
+      %h3 Links
+      - for link in @project.links
+        = link_to link.title, link.url
 
   .col-md-6
     %h2 Contributors
