@@ -1,0 +1,15 @@
+.row
+  =form_for @project do |f|
+    .col-md-6
+      .form-group
+        = f.label :title, for: :title
+        = f.text_field :title
+      .form-group
+        = f.label :description
+        = f.text_area :description
+    .col-md-6
+      .links
+        = f.fields_for :links do |l|
+          = render "link_form", l:l
+        = add_link_for f
+      = f.submit class: "btn btn-default"

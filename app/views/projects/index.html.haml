@@ -1,0 +1,10 @@
+= surround "<div class=\"row\">".html_safe,"</div>".html_safe do
+  - @projects.each_index do |i|
+    - if i %3 == 2
+      = surround "<div class=\"col-md-4\">".html_safe, "</div></div><div class=\"row\">".html_safe do
+        = render partial: "project", locals: {project: @projects[i]}
+    - else
+      = surround "<div class=\"col-md-4\">".html_safe, "</div>".html_safe do
+        = render partial: "project", locals: {project: @projects[i]}
+  - if @projects.length % 3 == 0
+    = "</div>".html_safe

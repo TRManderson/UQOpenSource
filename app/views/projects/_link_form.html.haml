@@ -1,0 +1,10 @@
+.link
+  .form-group
+    = l.label :title
+    = l.text_field :title
+  .form-group
+    = l.label :url
+    = l.text_field :url
+  .remove.form-group
+    = l.hidden_field :_destroy
+    = link_to "remove", "#", onclick: "removeLink(this);"

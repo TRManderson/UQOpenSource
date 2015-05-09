@@ -1,0 +1,19 @@
+%nav.navbar.navbar-static.navbar-inverse
+  .container
+    .navbar-header
+      %a.navbar-brand(href="/")
+        Home
+    #navbar.collapse.navbar-collapse
+      - if user_signed_in?
+        %ul.nav.navbar-nav
+          %li
+            %a(href=new_project_path) New Project
+      %ul.nav.navbar-nav.navbar-right
+        - if !user_signed_in?
+          %li
+            %a(href=new_user_session_path) Sign in
+        - else
+          %li
+            = link_to "Profile", "/users/"+current_user.id.to_s
+          %li
+            =link_to "Sign out", destroy_user_session_path, method: :delete

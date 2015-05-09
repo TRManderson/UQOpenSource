@@ -1,0 +1,12 @@
+.jumbotron
+  %h1
+    = @user.name
+  %h2
+    = @user.email
+
+  %p
+    Contributes to:
+    %ul
+      - for project in @user.projects
+        %li
+          = link_to project.title, project

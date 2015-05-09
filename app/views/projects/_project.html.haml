@@ -1,0 +1,21 @@
+.panel.panel-primary
+  .panel-heading
+    .pull-right
+      = project.users.count
+      - if project.users.count == 1
+        Contributor
+      -else
+        Contributors
+    %h2.panel-title
+      = link_to project.title, project
+  .panel-body
+    .desc
+      = markdown project.description
+  - if project.links.count > 0
+    %ul.list-group
+      %li.list-group-item
+        Links
+      - for link in project.links
+        %li.list-group-item(style="margin-left:1em;")
+          %a{href: link.url}
+            = link.title
