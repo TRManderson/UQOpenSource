@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def render_500(exception)
     logger.info exception.backtrace.join("\n")
-    @log=exception.backtrace.join("<br />\n")
+    @log=exception.backtrace.join("<br />\n".html_safe)
     render template: 'errors/500', layout: 'layouts/application', status: 500
   end
 end
