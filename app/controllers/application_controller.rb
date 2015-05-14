@@ -9,17 +9,4 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
-
-  if Rails.env.production?
-    unless Rails.application.config.consider_all_requests_local
-      rescue_from Exception, with: :render_500
-    end
-  end
-
-
-  def render_500(exception)
-    logger.info exception.backtrace.join("\n")
-    @log=exception.backtrace.join("<br />\n".html_safe)
-    render template: 'errors/500', layout: 'layouts/application', status: 500
-  end
 end
