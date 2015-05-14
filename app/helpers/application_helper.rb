@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    text.blank? ? "" : Markdown.new(text).to_html.html_safe
+    text.blank? ? "" : Markdown.new(text, banner: false).to_html.html_safe
   end
 
   def bootstrap_flash_for(flash_type)
